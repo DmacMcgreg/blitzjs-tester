@@ -6,7 +6,21 @@
     "studio": "blitz db studio",
     "build": "blitz build",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
-    "test": "echo \"No tests yet\""
+    "dev": "blitz dev",
+    "build:chakra-version": "NODE_ENV=production blitz build && blitz prisma migrate deploy",
+    "studio:chakra-version": "blitz prisma studio",
+    "prisma:migrate": "blitz prisma migrate dev",
+    "prisma:push": "blitz prisma db push",
+    "test": "jest",
+    "test:prepare": "NODE_ENV=test blitz prisma db push",
+    "test:watch": "jest --watch",
+    "prepare": "husky install",
+    "generate:favicon": "real-favicon generate faviconDescription.json faviconData.json public",
+    "docker:up": "docker compose up -d",
+    "postinstall": "blitz prisma generate"
+  },
+  "prisma": {
+    "schema": "db/schema.prisma"
   },
   "browserslist": [
     "defaults"
@@ -27,29 +41,43 @@
     ]
   },
   "dependencies": {
-    "@prisma/cli": "latest",
-    "@prisma/client": "latest",
-    "blitz": "0.17.0",
-    "react": "experimental",
-    "react-dom": "experimental"
+    "@chakra-ui/icons": "1.0.15",
+    "@chakra-ui/react": "1.6.6",
+    "@chakra-ui/theme-tools": "1.1.9",
+    "@emotion/react": "11.4.1",
+    "@emotion/styled": "11.3.0",
+    "@hookform/devtools": "3.1.0",
+    "@hookform/resolvers": "2.7.1",
+    "@prisma/client": "2.29.1",
+    "@sendgrid/client": "7.4.6",
+    "@sendgrid/mail": "7.4.6",
+    "blitz": "0.39.0",
+    "framer-motion": "4.1.17",
+    "next-seo": "4.26.0",
+    "postmark": "2.7.7",
+    "react": "alpha",
+    "react-dom": "alpha",
+    "react-error-boundary": "3.1.1",
+    "react-hook-form": "7.12.2",
+    "react-icons": "4.2.0",
+    "zod": "3.7.2"
   },
   "devDependencies": {
-    "@types/react": "16.9.36",
-    "@typescript-eslint/eslint-plugin": "2.x",
-    "@typescript-eslint/parser": "2.x",
-    "babel-eslint": "10.1.0",
-    "eslint": "6.8.0",
-    "eslint-config-react-app": "5.2.1",
-    "eslint-plugin-flowtype": "4.7.0",
-    "eslint-plugin-import": "2.21.2",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.20.0",
-    "eslint-plugin-react-hooks": "3.0.0",
-    "husky": "4.2.5",
-    "lint-staged": "10.2.10",
-    "prettier": "2.0.5",
-    "pretty-quick": "2.0.1",
-    "typescript": "4.1.5"
+    "@types/eslint": "7.28.0",
+    "@types/prettier": "2.3.2",
+    "@types/preview-email": "2.0.1",
+    "@types/react": "17.0.18",
+    "@types/react-dom": "17.0.9",
+    "cli-real-favicon": "latest",
+    "eslint": "7.32.0",
+    "husky": "7.0.1",
+    "lint-staged": "11.1.2",
+    "prettier": "2.3.2",
+    "prettier-plugin-prisma": "2.29.1",
+    "pretty-quick": "3.1.1",
+    "preview-email": "3.0.5",
+    "prisma": "2.29.1",
+    "typescript": "~4.3"
   },
   "private": true
 }
